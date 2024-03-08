@@ -16,6 +16,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { Audio } from "expo-av";
 
 export default function Glossary(props) {
+  console.log('debug')
   const [words, setWords] = useState([]);
   const [selectedLetter, setSelectedLetter] = useState(null);
   const [scrollbarLetter, setScrollbarLetter] = useState(null);
