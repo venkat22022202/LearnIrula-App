@@ -286,6 +286,7 @@ const SpinWheel = () => {
       >
         <Text style={styles.spinButtonText}>SPIN</Text>
       </Pressable>
+      
 
       {/* Spinwheel Arrow/Ratchet/Pointer */}
       <Image
@@ -305,6 +306,7 @@ const SpinWheel = () => {
       >
         {/* Add any content inside the Pressable if needed */}
       </Pressable>
+      
       <PictureInfoBox data={data} word={word}></PictureInfoBox>
     </View>
   );

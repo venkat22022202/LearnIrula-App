@@ -41,7 +41,7 @@ function BottomTabs() {
         component={Home}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="ios-home" color={color} size={size} />
+            <Ionicons name="home" color={color} size={size} />
           ),
           tabBarLabel: "Home",
           headerTitleAlign: "center",
@@ -52,7 +52,7 @@ function BottomTabs() {
         component={Glossary}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="ios-search" color={color} size={size} />
+            <Ionicons name="search" color={color} size={size} />
           ),
           tabBarLabel: "Glossary",
           headerTitleAlign: "center",
@@ -85,7 +85,7 @@ function BottomTabs() {
         component={AboutScreen}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="ios-information-circle" color={color} size={size} />
+            <Ionicons name="information-circle" color={color} size={size} />
           ),
           tabBarLabel: "About",
           headerTitleAlign: "center",
