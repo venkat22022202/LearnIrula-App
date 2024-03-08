@@ -2,10 +2,12 @@ import "react-native-gesture-handler";
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
+import { FontAwesome5 } from "@expo/vector-icons";
 import Home from "../Home";
 import Glossary from "../Glossary";
 import AboutScreen from "../About";
-
+import SpinWheel from "../SpinWheel";
+import Quiz from "../Quiz";
 const Tab = createBottomTabNavigator();
 
 function BottomTabs() {
@@ -53,6 +55,28 @@ function BottomTabs() {
             <Ionicons name="ios-search" color={color} size={size} />
           ),
           tabBarLabel: "Glossary",
+          headerTitleAlign: "center",
+        }}
+      />
+      <Tab.Screen
+        name="SpinWheel"
+        component={SpinWheel}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome5 name="codiepie" color={color} size={size} />
+          ),
+          tabBarLabel: "SpinWheel",
+          headerTitleAlign: "center",
+        }}
+      />
+      <Tab.Screen
+        name="Quiz"
+        component={Quiz}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="ribbon" color={color} size={size} />
+          ),
+          tabBarLabel: "Quiz",
           headerTitleAlign: "center",
         }}
       />
