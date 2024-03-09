@@ -47,10 +47,19 @@ const Quiz = () => {
     return () => clearInterval(interval);
   }, [timer]);
 
+  const shuffleOptions = (options) => {
+    for (let i = options.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [options[i], options[j]] = [options[j], options[i]];
+    }
+    return options;
+  };
+
   const displayQuestionAndOptions = () => {
     const question = `Question ${currentQuestion}: What is in the image?`;
     setQuestionText(question);
-    setOptions(data.slice(currentQuestion - 1, currentQuestion + 3).map(item => ({ text: item.enWord, audioPath: item.audioPath })));
+    const currentOptions = data.slice(currentQuestion - 1, currentQuestion + 3).map(item => ({ text: item.enWord, audioPath: item.audioPath }));
+    setOptions(shuffleOptions(currentOptions));
     setImageUri(data[currentQuestion - 1]?.picturePath);
   };
 

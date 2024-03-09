@@ -42,29 +42,29 @@ function BottomTabs() {
         component={Home}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="home" color={color} size={size} />
+            <Ionicons name="home-outline" color={color} size={size} />
           ),
           tabBarLabel: "Home",
           headerTitleAlign: "center",
         }}
       />
-      <Tab.Screen 
-       name="CoinTossing" 
-       component={CoinTossing} 
-       options={{
-         tabBarIcon: ({ color, size }) => (
-           <Ionicons name="home" color={color} size={size} />
-         ),
-         tabBarLabel: 'Coin Toss',
-         headerTitleAlign: "center",
-       }} 
+      <Tab.Screen
+        name="CoinTossing"
+        component={CoinTossing}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome5 name="coins" color={color} size={size} />
+          ),
+          tabBarLabel: "Coin Toss",
+          headerTitleAlign: "center",
+        }}
       />
       <Tab.Screen
         name="Glossary"
         component={Glossary}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="search" color={color} size={size} />
+            <Ionicons name="search-outline" color={color} size={size} />
           ),
           tabBarLabel: "Glossary",
           headerTitleAlign: "center",
@@ -75,7 +75,7 @@ function BottomTabs() {
         component={SpinWheel}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name="spinner" color={color} size={size} />
+            <FontAwesome5 name="circle-notch" color={color} size={size} />
           ),
           tabBarLabel: "SpinWheel",
           headerTitleAlign: "center",
@@ -86,7 +86,7 @@ function BottomTabs() {
         component={Quiz}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="school" color={color} size={size} />
+            <Ionicons name="book-outline" color={color} size={size} />
           ),
           tabBarLabel: "Quiz",
           headerTitleAlign: "center",
@@ -97,7 +97,7 @@ function BottomTabs() {
         component={AboutScreen}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="information-circle" color={color} size={size} />
+            <Ionicons name="information-circle-outline" color={color} size={size} />
           ),
           tabBarLabel: "About",
           headerTitleAlign: "center",
