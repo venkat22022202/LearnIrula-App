@@ -53,7 +53,7 @@ function BottomTabs() {
        component={CoinTossing} 
        options={{
          tabBarIcon: ({ color, size }) => (
-           <Ionicons name="compare" color={color} size={size} />
+           <Ionicons name="home" color={color} size={size} />
          ),
          tabBarLabel: 'Coin Toss',
          headerTitleAlign: "center",
