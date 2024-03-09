@@ -8,6 +8,7 @@ import AboutScreen from "../About";
 import SpinWheel from "../SpinWheel";
 import Quiz from "../Quiz";
 import CoinTossing from "../CoinTossing";
+import SpeechCheck from "../Speech"; 
 
 const Tab = createBottomTabNavigator();
 
@@ -59,6 +60,7 @@ function BottomTabs() {
           headerTitleAlign: "center",
         }}
       />
+      
       <Tab.Screen
         name="Glossary"
         component={Glossary}
@@ -89,6 +91,17 @@ function BottomTabs() {
             <Ionicons name="book-outline" color={color} size={size} />
           ),
           tabBarLabel: "Quiz",
+          headerTitleAlign: "center",
+        }}
+      />
+       <Tab.Screen
+        name="CheckSpeech"
+        component={SpeechCheck}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="mic" color={color} size={size} />
+          ),
+          tabBarLabel: "Check Speech",
           headerTitleAlign: "center",
         }}
       />
