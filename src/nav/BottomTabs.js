@@ -1,13 +1,14 @@
 import "react-native-gesture-handler";
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Ionicons } from "@expo/vector-icons";
-import { FontAwesome5 } from "@expo/vector-icons";
+import { Ionicons, FontAwesome5 } from "@expo/vector-icons";
 import Home from "../Home";
 import Glossary from "../Glossary";
 import AboutScreen from "../About";
 import SpinWheel from "../SpinWheel";
 import Quiz from "../Quiz";
+import CoinTossing from "../CoinTossing";
+
 const Tab = createBottomTabNavigator();
 
 function BottomTabs() {
@@ -47,6 +48,17 @@ function BottomTabs() {
           headerTitleAlign: "center",
         }}
       />
+      <Tab.Screen 
+       name="CoinTossing" 
+       component={CoinTossing} 
+       options={{
+         tabBarIcon: ({ color, size }) => (
+           <Ionicons name="compare" color={color} size={size} />
+         ),
+         tabBarLabel: 'Coin Toss',
+         headerTitleAlign: "center",
+       }} 
+      />
       <Tab.Screen
         name="Glossary"
         component={Glossary}
@@ -63,7 +75,7 @@ function BottomTabs() {
         component={SpinWheel}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name="codiepie" color={color} size={size} />
+            <FontAwesome5 name="spinner" color={color} size={size} />
           ),
           tabBarLabel: "SpinWheel",
           headerTitleAlign: "center",
@@ -74,7 +86,7 @@ function BottomTabs() {
         component={Quiz}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="ribbon" color={color} size={size} />
+            <Ionicons name="school" color={color} size={size} />
           ),
           tabBarLabel: "Quiz",
           headerTitleAlign: "center",
