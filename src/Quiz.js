@@ -13,7 +13,7 @@ const Quiz = () => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [imageUri, setImageUri] = useState("");
-  const [translateToTamil, setTranslateToTamil] = useState(false); // New state for tracking translation toggle
+  const [translateToTamil, setTranslateToTamil] = useState(false);
 
   const fetchData = useCallback(() => {
     console.log("Fetching data from API...");
@@ -38,7 +38,7 @@ const Quiz = () => {
     if (data.length > 0) {
       displayQuestionAndOptions();
     }
-  }, [currentQuestion, data, translateToTamil]); // Add translateToTamil to the dependency array
+  }, [currentQuestion, data, translateToTamil]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -59,7 +59,7 @@ const Quiz = () => {
     const question = `Question ${currentQuestion}: What is in the image?`;
     setQuestionText(question);
     const currentOptions = data.slice(currentQuestion - 1, currentQuestion + 3).map(item => ({
-      text: translateToTamil ? item.taWord : item.enWord, // Conditional text based on translation toggle
+      text: translateToTamil ? item.taWord : item.enWord,
       audioPath: item.audioPath
     }));
     setOptions(shuffleOptions(currentOptions));
@@ -84,11 +84,10 @@ const Quiz = () => {
 
     if (currentQuestion < data.length) {
       setCurrentQuestion(currentQuestion + 1);
-      setTimer(60); // Reset timer for next question
+      setTimer(60);
     }
   };
 
-  // Toggle function to switch between English and Tamil
   const toggleLanguage = () => {
     setTranslateToTamil(!translateToTamil);
   };
@@ -126,12 +125,12 @@ const Quiz = () => {
   );
 };
 
-// Updated styles to reflect changes, especially for the Image container
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: "flex-start",
     alignItems: "center",
+    paddingTop: 50, // Adjusted for proper spacing
     backgroundColor: "#F0F8FF",
   },
   loadingText: {
@@ -139,6 +138,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   quizContainer: {
+    marginTop: 20, // Added to give space between the toggle button and the quiz card
     width: '90%',
     padding: 20,
     backgroundColor: "#FFF0F5",
@@ -185,46 +185,39 @@ const styles = StyleSheet.create({
   },
   questionImage: {
     width: '100%',
-    height: '100%',
+    height: 200, // Adjust height to maintain aspect ratio
     resizeMode: 'contain',
     borderRadius: 10,
   },
   imageContainer: {
     width: 300,
     height: 200,
-    marginVertical: 20,
     justifyContent: 'center',
     alignItems: 'center',
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.22,
-    shadowRadius: 2.22,
-    elevation: 3, // Applied here to the View
-    borderRadius: 10, // Ensure this matches the Image borderRadius for a consistent look
+    marginBottom: 20, // Added to separate from options
   },
-    // Other styles remain unchanged
-    languageToggleButton: {
-      position: 'absolute',
-      top: 40,
-      right: 20,
-      backgroundColor: '#6A5ACD', // Enhanced to a deep purple for a more sophisticated look
-      paddingHorizontal: 20,
-      paddingVertical: 10,
-      borderRadius: 20, // Rounded edges for a modern, pill-shaped button
-      shadowColor: "#000",
-      shadowOffset: {
-        width: 0,
-        height: 2,
-      },
-      shadowOpacity: 0.25,
-      shadowRadius: 3.84,
-      elevation: 5,
+  languageToggleButton: {
+    position: 'absolute',
+    top: 10, // Adjusted to place above the card
+    right: 20,
+    backgroundColor: '#6A5ACD',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 20,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
     },
-    languageToggleButtonText: {
-      color: '#FFFFFF',
-      fontSize: 16,
-      fontWeight: "bold", // Bold font for better readability
-    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  languageToggleButtonText: {
+    color: '#FFFFFF',
+    fontSize: 16,
+    fontWeight: "bold",
+  },
 });
 
 export default Quiz;
