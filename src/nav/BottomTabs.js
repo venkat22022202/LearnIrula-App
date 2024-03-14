@@ -5,10 +5,7 @@ import { Ionicons, FontAwesome5 } from "@expo/vector-icons";
 import Home from "../Home";
 import Glossary from "../Glossary";
 import AboutScreen from "../About";
-import SpinWheel from "../SpinWheel";
-import Quiz from "../Quiz";
-import CoinTossing from "../CoinTossing";
-import SpeechCheck from "../Speech"; 
+import ActivityStackNavigator from '../ActivityStackNavigator'; // Import the stack navigator
 
 const Tab = createBottomTabNavigator();
 
@@ -50,17 +47,16 @@ function BottomTabs() {
         }}
       />
       <Tab.Screen
-        name="CoinTossing"
-        component={CoinTossing}
+        name="Activitiy Screen"
+        component={ActivityStackNavigator} // Use the stack navigator here
         options={{
           tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name="coins" color={color} size={size} />
+            <Ionicons name="apps-outline" color={color} size={size} />
           ),
-          tabBarLabel: "Coin Toss",
+          tabBarLabel: "Activities",
           headerTitleAlign: "center",
         }}
       />
-      
       <Tab.Screen
         name="Glossary"
         component={Glossary}
@@ -69,39 +65,6 @@ function BottomTabs() {
             <Ionicons name="search-outline" color={color} size={size} />
           ),
           tabBarLabel: "Glossary",
-          headerTitleAlign: "center",
-        }}
-      />
-      <Tab.Screen
-        name="SpinWheel"
-        component={SpinWheel}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name="circle-notch" color={color} size={size} />
-          ),
-          tabBarLabel: "SpinWheel",
-          headerTitleAlign: "center",
-        }}
-      />
-      <Tab.Screen
-        name="Quiz"
-        component={Quiz}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="book-outline" color={color} size={size} />
-          ),
-          tabBarLabel: "Quiz",
-          headerTitleAlign: "center",
-        }}
-      />
-       <Tab.Screen
-        name="CheckSpeech"
-        component={SpeechCheck}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="mic" color={color} size={size} />
-          ),
-          tabBarLabel: "Check Speech",
           headerTitleAlign: "center",
         }}
       />
