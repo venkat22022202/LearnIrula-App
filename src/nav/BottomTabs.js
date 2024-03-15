@@ -1,11 +1,12 @@
 import "react-native-gesture-handler";
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Ionicons, FontAwesome5 } from "@expo/vector-icons";
+// Ensure you have @expo/vector-icons installed
+import { Ionicons } from "@expo/vector-icons";
 import Home from "../Home";
 import Glossary from "../Glossary";
 import AboutScreen from "../About";
-import ActivityStackNavigator from '../ActivityStackNavigator'; // Import the stack navigator
+import ActivityStackNavigator from "../ActivityStackNavigator"; // Import the stack navigator
 
 const Tab = createBottomTabNavigator();
 
@@ -16,8 +17,6 @@ function BottomTabs() {
         headerShadowVisible: false,
         headerStyle: {
           backgroundColor: "#284387",
-          borderBottomWidth: 0,
-          borderTopWidth: 0,
         },
         headerTintColor: "#fff",
         headerTitleStyle: {
@@ -25,14 +24,10 @@ function BottomTabs() {
         },
         tabBarActiveTintColor: "white",
         tabBarInactiveTintColor: "#a8a8a8",
-        tabBarStyle: [
-          {
-            display: "flex",
-            backgroundColor: "#284387",
-            borderTopWidth: 0,
-          },
-          null,
-        ],
+        tabBarStyle: {
+          backgroundColor: "#284387",
+          borderTopWidth: 0,
+        },
       }}
     >
       <Tab.Screen
@@ -47,8 +42,8 @@ function BottomTabs() {
         }}
       />
       <Tab.Screen
-        name="Activitiy Screen"
-        component={ActivityStackNavigator} // Use the stack navigator here
+        name="Activity Screen"
+        component={ActivityStackNavigator}
         options={{
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="apps-outline" color={color} size={size} />

@@ -8,12 +8,13 @@ const Quiz = () => {
   const [timer, setTimer] = useState(60);
   const [options, setOptions] = useState([]);
   const [points, setPoints] = useState(0);
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState({});
   const [questionText, setQuestionText] = useState("");
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [imageUri, setImageUri] = useState("");
   const [translateToTamil, setTranslateToTamil] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const fetchData = useCallback(() => {
     console.log("Fetching data from API...");
@@ -64,6 +65,8 @@ const Quiz = () => {
     }));
     setOptions(shuffleOptions(currentOptions));
     setImageUri(data[currentQuestion - 1]?.picturePath);
+    setIsSubmitted(false);
+    setSelectedOption({});
   };
 
   const playSound = async (audioPath) => {
@@ -75,16 +78,26 @@ const Quiz = () => {
   };
 
   const handleOptionPress = (option) => {
-    setSelectedOption(option.text);
-    playSound(option.audioPath);
-
-    if (translateToTamil ? option.text === data[currentQuestion - 1].taWord : option.text === data[currentQuestion - 1].enWord) {
-      setPoints(points + 10);
+    if (!isSubmitted) {
+      setSelectedOption(option);
+      playSound(option.audioPath);
     }
+  };
 
-    if (currentQuestion < data.length) {
-      setCurrentQuestion(currentQuestion + 1);
+  const handleSubmit = () => {
+    if (!isSubmitted && selectedOption.text) {
+      if (translateToTamil ? selectedOption.text === data[currentQuestion - 1].taWord : selectedOption.text === data[currentQuestion - 1].enWord) {
+        setPoints(points + 10);
+      }
+
+      if (currentQuestion < data.length) {
+        setCurrentQuestion(currentQuestion + 1);
+      } else {
+        // Handle quiz completion here
+      }
+
       setTimer(60);
+      setIsSubmitted(true);
     }
   };
 
@@ -113,11 +126,14 @@ const Quiz = () => {
             <Pressable
               key={index}
               onPress={() => handleOptionPress(option)}
-              style={styles.optionButton}
+              style={[styles.optionButton, selectedOption === option && styles.selectedOption]}
             >
               <Text style={styles.optionButtonText}>{option.text}</Text>
             </Pressable>
           ))}
+          <Pressable onPress={handleSubmit} style={styles.submitButton} disabled={isSubmitted}>
+            <Text style={styles.submitButtonText}>Submit</Text>
+          </Pressable>
           <Text style={styles.pointsText}>Points: {points}</Text>
         </View>
       )}
@@ -217,6 +233,21 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 16,
     fontWeight: "bold",
+  },
+  submitButton: {
+    backgroundColor: "#32CD32", // Green for visibility
+    padding: 10,
+    borderRadius: 5,
+    marginTop: 10,
+  },
+  submitButtonText: {
+    color: "#FFFFFF",
+    fontSize: 18,
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  selectedOption: {
+    backgroundColor: '#D3D3D3', // Grey color for selected option
   },
 });
 
