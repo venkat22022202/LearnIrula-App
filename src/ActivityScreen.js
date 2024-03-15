@@ -6,33 +6,37 @@ function ActivityScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Activities</Text>
-      
+
       <Button
         title="Check Speech"
         onPress={() => navigation.navigate('SpeechCheck')}
-        buttonStyle={styles.button}
+        buttonStyle={{ ...styles.button, backgroundColor: '#FF6347' }} // Tomato
         icon={<Icon name="mic" type="material" color="#ffffff" />}
+        titleStyle={styles.buttonText}
       />
-      
+
       <Button
         title="Take a Quiz"
         onPress={() => navigation.navigate('Quiz')}
-        buttonStyle={styles.button}
+        buttonStyle={{ ...styles.button, backgroundColor: '#4682B4' }} // Steel Blue
         icon={<Icon name="school" type="material" color="#ffffff" />}
+        titleStyle={styles.buttonText}
       />
-      
+
       <Button
         title="Coin Tossing"
         onPress={() => navigation.navigate('CoinTossing')}
-        buttonStyle={styles.button}
+        buttonStyle={{ ...styles.button, backgroundColor: '#32CD32' }} // Lime Green
         icon={<Icon name="casino" type="material" color="#ffffff" />}
+        titleStyle={styles.buttonText}
       />
 
       <Button
         title="SpinWheel"
         onPress={() => navigation.navigate('SpinWheel')}
-        buttonStyle={styles.button}
+        buttonStyle={{ ...styles.button, backgroundColor: '#FFA07A' }} // Light Salmon
         icon={<Icon name="refresh" type="material" color="#ffffff" />}
+        titleStyle={styles.buttonText}
       />
     </View>
   );
@@ -43,23 +47,27 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f5f5f5', // Light grey background
+    backgroundColor: '#E6E6FA', // Lavender background
   },
   title: {
-    fontSize: 24,
-    color: '#333',
-    marginBottom: 40,
+    fontSize: 26,
+    color: '#2F4F4F', // Dark Slate Gray for the title
+    marginBottom: 50,
     fontWeight: 'bold',
   },
   button: {
-    backgroundColor: '#007bff', // Bootstrap primary color
-    borderRadius: 20,
-    paddingVertical: 10,
+    borderRadius: 25,
+    paddingVertical: 12,
     paddingHorizontal: 20,
     marginVertical: 10,
-    minWidth: 200,
-    justifyContent: 'flex-start', // Align icon and text to the left
-    iconRight: true, // Place icon to the right of text
+    minWidth: 250,
+    elevation: 3, // Adding some shadow
+    flexDirection: 'row', // Ensure icon and text are in a row
+    alignItems: 'center', // Align items in the center vertically
+  },
+  buttonText: {
+    fontSize: 18,
+    marginLeft: 10, // Give some space between the icon and the text
   },
 });
 
