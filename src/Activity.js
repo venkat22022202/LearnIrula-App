@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#007bff',
     borderRadius: 20,
     marginVertical: 10,
+    width: 100,
   },
   switchContainer: {
     flexDirection: "row",
