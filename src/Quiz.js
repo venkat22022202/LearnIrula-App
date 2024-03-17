@@ -8,7 +8,7 @@ const Quiz = () => {
   const [timer, setTimer] = useState(60);
   const [options, setOptions] = useState([]);
   const [points, setPoints] = useState(0);
-  const [selectedOption, setSelectedOption] = useState({});
+  const [selectedOption, setSelectedOption] = useState(null); // Adjusted for clarity
   const [questionText, setQuestionText] = useState("");
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
@@ -43,7 +43,7 @@ const Quiz = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setTimer((prevTimer) => (prevTimer > 0 ? prevTimer - 1 : 0));
+      setTimer(prevTimer => prevTimer > 0 ? prevTimer - 1 : 0);
     }, 1000);
     return () => clearInterval(interval);
   }, [timer]);
@@ -66,7 +66,7 @@ const Quiz = () => {
     setOptions(shuffleOptions(currentOptions));
     setImageUri(data[currentQuestion - 1]?.picturePath);
     setIsSubmitted(false);
-    setSelectedOption({});
+    setSelectedOption(null); // Reset for the new question
   };
 
   const playSound = async (audioPath) => {
@@ -78,26 +78,27 @@ const Quiz = () => {
   };
 
   const handleOptionPress = (option) => {
-    if (!isSubmitted) {
-      setSelectedOption(option);
-      playSound(option.audioPath);
-    }
+    setSelectedOption(option);
+    playSound(option.audioPath);
   };
 
   const handleSubmit = () => {
-    if (!isSubmitted && selectedOption.text) {
-      if (translateToTamil ? selectedOption.text === data[currentQuestion - 1].taWord : selectedOption.text === data[currentQuestion - 1].enWord) {
+    if (!isSubmitted && selectedOption) {
+      const correctAnswer = translateToTamil ? data[currentQuestion - 1].taWord : data[currentQuestion - 1].enWord;
+      if (selectedOption.text === correctAnswer) {
         setPoints(points + 10);
       }
 
       if (currentQuestion < data.length) {
         setCurrentQuestion(currentQuestion + 1);
       } else {
-        // Handle quiz completion here
+        console.log("Quiz completed. Final points:", points);
+        // Optionally reset for a new game or navigate to a results page
       }
 
       setTimer(60);
       setIsSubmitted(true);
+      setTimeout(() => setSelectedOption(null), 500); // Clear selection for visual feedback
     }
   };
 
@@ -126,14 +127,16 @@ const Quiz = () => {
             <Pressable
               key={index}
               onPress={() => handleOptionPress(option)}
-              style={[styles.optionButton, selectedOption === option && styles.selectedOption]}
+              style={[styles.optionButton, selectedOption === option ? styles.selectedOption : null]}
             >
               <Text style={styles.optionButtonText}>{option.text}</Text>
             </Pressable>
           ))}
-          <Pressable onPress={handleSubmit} style={styles.submitButton} disabled={isSubmitted}>
-            <Text style={styles.submitButtonText}>Submit</Text>
-          </Pressable>
+          {!isSubmitted && (
+            <Pressable onPress={handleSubmit} style={styles.submitButton}>
+              <Text style={styles.submitButtonText}>Submit</Text>
+            </Pressable>
+          )}
           <Text style={styles.pointsText}>Points: {points}</Text>
         </View>
       )}
