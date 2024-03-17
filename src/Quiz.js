@@ -8,7 +8,7 @@ const Quiz = () => {
   const [timer, setTimer] = useState(60);
   const [options, setOptions] = useState([]);
   const [points, setPoints] = useState(0);
-  const [selectedOption, setSelectedOption] = useState(null); // Adjusted for clarity
+  const [selectedOption, setSelectedOption] = useState(null);
   const [questionText, setQuestionText] = useState("");
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
@@ -66,7 +66,7 @@ const Quiz = () => {
     setOptions(shuffleOptions(currentOptions));
     setImageUri(data[currentQuestion - 1]?.picturePath);
     setIsSubmitted(false);
-    setSelectedOption(null); // Reset for the new question
+    setSelectedOption(null);
   };
 
   const playSound = async (audioPath) => {
@@ -89,16 +89,19 @@ const Quiz = () => {
         setPoints(points + 10);
       }
 
-      if (currentQuestion < data.length) {
-        setCurrentQuestion(currentQuestion + 1);
-      } else {
-        console.log("Quiz completed. Final points:", points);
-        // Optionally reset for a new game or navigate to a results page
-      }
+      setIsSubmitted(true); // Mark as submitted to prevent multiple submissions
 
-      setTimer(60);
-      setIsSubmitted(true);
-      setTimeout(() => setSelectedOption(null), 500); // Clear selection for visual feedback
+      setTimeout(() => {
+        if (currentQuestion < data.length) {
+          setCurrentQuestion(currentQuestion + 1);
+          setIsSubmitted(false); // Reset for the next question
+          setSelectedOption(null); // Clear selection
+        } else {
+          console.log("Quiz completed. Final points:", points);
+          // Optionally reset for a new game or navigate to a results page
+        }
+        setTimer(60);
+      }, 500); // Delay to show selection
     }
   };
 
@@ -108,6 +111,9 @@ const Quiz = () => {
 
   return (
     <View style={styles.container}>
+      {/* Display points above the quiz content */}
+      <Text style={styles.pointsText}>Points: {points}</Text>
+
       <Pressable onPress={toggleLanguage} style={styles.languageToggleButton}>
         <Text style={styles.languageToggleButtonText}>
           {translateToTamil ? "Translate to English" : "Translate to Tamil"}
@@ -137,12 +143,12 @@ const Quiz = () => {
               <Text style={styles.submitButtonText}>Submit</Text>
             </Pressable>
           )}
-          <Text style={styles.pointsText}>Points: {points}</Text>
         </View>
       )}
     </View>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {
