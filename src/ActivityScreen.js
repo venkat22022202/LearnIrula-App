@@ -59,7 +59,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   buttonsContainer: {
-    // Style for the buttons' container to make it colorful
     backgroundColor: '#F0F8FF', // Alice Blue for a slight contrast with lavender
     borderRadius: 20, // Rounded corners
     padding: 20, // Padding inside the container
@@ -75,13 +74,18 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     marginVertical: 10,
     minWidth: 250,
-    elevation: 3,
+    elevation: 5, // Slightly increased elevation for a more pronounced shadow
     flexDirection: 'row',
     alignItems: 'center',
+    borderWidth: 1, // Add a border to make the button stand out
+    borderColor: '#ddd', // Subtle border color
+    backgroundColor: 'transparent', // Use a transparent background to highlight the border and shadow
   },
   buttonText: {
     fontSize: 18,
+    fontWeight: '500', // Make text a bit bolder
     marginLeft: 10,
+    color: '#2F4F4F', // Use a color that contrasts well with the button's background
   },
 });
 
