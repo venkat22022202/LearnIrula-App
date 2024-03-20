@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { View, Text, Image, Pressable, StyleSheet } from "react-native";
 import axios from "axios";
 import { Audio } from 'expo-av';
+import * as Progress from 'react-native-progress'; // Import the progress bar component
 
 const Quiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(1);
@@ -15,6 +16,7 @@ const Quiz = () => {
   const [imageUri, setImageUri] = useState("");
   const [translateToTamil, setTranslateToTamil] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [progress, setProgress] = useState(0); // New state variable for progress
 
   const fetchData = useCallback(() => {
     console.log("Fetching data from API...");
@@ -47,6 +49,11 @@ const Quiz = () => {
     }, 1000);
     return () => clearInterval(interval);
   }, [timer]);
+
+  useEffect(() => {
+    // Update progress when the current question changes
+    setProgress(currentQuestion / data.length);
+  }, [currentQuestion, data.length]);
 
   const shuffleOptions = (options) => {
     for (let i = options.length - 1; i > 0; i--) {
@@ -90,6 +97,7 @@ const Quiz = () => {
       }
 
       setIsSubmitted(true); // Mark as submitted to prevent multiple submissions
+ // Mark as submitted to prevent multiple submissions
 
       setTimeout(() => {
         if (currentQuestion < data.length) {
