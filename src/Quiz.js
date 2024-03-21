@@ -185,65 +185,69 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "flex-start",
     alignItems: "center",
-    paddingTop: 30, // Reduced for a tighter look
-    backgroundColor: "#f7f7f7", // A softer background color
+    paddingTop: 20,
+    backgroundColor: "#FAFAFA", // Lighter shade for a clean and airy look
   },
   loadingText: {
-    color: "#FF4500",
+    color: "#007AFF", // Switch to a more engaging blue
     fontSize: 20,
+    fontWeight: "500", // Medium weight for a balance between bold and regular
   },
   quizContainer: {
     marginTop: 20,
-    width: '95%', // Slightly wider for more space
+    width: '95%',
     padding: 20,
-    backgroundColor: "#ffffff", // Pure white for cleanliness
-    borderRadius: 20, // More pronounced rounded corners
+    backgroundColor: "#FFFFFF", // Keep it clean and simple with white
+    borderRadius: 20,
     shadowColor: "#000",
-    shadowOffset: { width: 0, height: 4 },
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
-    shadowRadius: 6,
-    elevation: 8,
+    shadowRadius: 4,
+    elevation: 3, // Slightly less elevation for a subtle depth
   },
   quizHeader: {
-    fontSize: 22,
-    fontWeight: "600", // Slightly less bold for a modern look
+    fontSize: 24,
+    fontWeight: "700", // Bold for emphasis
     marginBottom: 15,
-    color: "#5A5A5A", // Softer color for the text
+    color: "#333333", // Deep gray for strong visibility
   },
   timerText: {
     marginBottom: 20,
-    color: "#E53E3E", // A vibrant color for the timer to stand out
+    color: "#FF6347", // Tomate for urgency
     fontSize: 18,
+    fontWeight: "600",
   },
   questionText: {
     marginBottom: 20,
     fontSize: 18,
-    fontWeight: "500", // Medium weight for readability
-    color: "#333333", // Darker color for contrast
+    fontWeight: "500",
+    color: "#4A4A4A", // Slightly softer than black for ease on the eyes
   },
   optionButton: {
-    backgroundColor: "#81E6D9", // A refreshing teal for options
-    padding: 12,
-    borderRadius: 10,
+    backgroundColor: "#F0F0F0", // Light gray for an understated look
+    paddingVertical: 14,
+    paddingHorizontal: 20,
+    borderRadius: 12,
     marginBottom: 10,
-    elevation: 2, // Slight elevation for depth
+    borderWidth: 1,
+    borderColor: "#E0E0E0", // Subtle border color for definition
   },
   optionButtonText: {
-    color: "#2D3748", // Dark gray for better readability
+    color: "#1C1C1E", // Almost black for contrast
     fontSize: 16,
-    fontWeight: "bold",
+    fontWeight: "600", // Semi-bold for legibility
     textAlign: "center",
   },
   pointsText: {
     fontSize: 18,
     fontWeight: "bold",
-    color: "#38A169", // A green that's not too bright
+    color: "#4CAF50", // Crisp green for positivity
   },
   questionImage: {
     width: '100%',
-    height: 250, // Increased height for better focus
+    height: 200,
     resizeMode: 'contain',
-    borderRadius: 15, // Rounded corners for the image
+    borderRadius: 10,
     marginBottom: 20,
   },
   imageContainer: {
@@ -252,11 +256,11 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   languageToggleButton: {
-    paddingHorizontal: 15,
-    paddingVertical: 8,
-    borderRadius: 20,
-    backgroundColor: '#3182CE', // A soothing blue
-    marginVertical: 10, // Added vertical margin
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 18,
+    backgroundColor: '#007AFF', // Bright blue for a pop of color
+    marginVertical: 10,
   },
   languageToggleButtonText: {
     color: '#FFFFFF',
@@ -264,9 +268,10 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   submitButton: {
-    backgroundColor: "#48BB78", // A lively green
-    padding: 12,
-    borderRadius: 10,
+    backgroundColor: "#34C759", // A welcoming shade of green
+    paddingVertical: 14,
+    paddingHorizontal: 20,
+    borderRadius: 12,
     marginTop: 10,
   },
   submitButtonText: {
@@ -276,17 +281,33 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   selectedOption: {
-    backgroundColor: '#CBD5E0', // A light gray to indicate selection
+    borderColor: '#007AFF', // Highlight selected option with the primary color
+    backgroundColor: '#E3F2FD', // A very light blue to indicate selection
   },
   progressBar: {
     marginVertical: 15,
-    height: 6,
-    borderRadius: 3,
-    backgroundColor: '#EDF2F7', // Light background for the progress bar
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: '#E0E0E0', // A neutral background for contrast
+    color: "#007AFF", // Use the primary color for the progress fill
   },
   scrollView: {
     width: '100%',
   },
+  badgeContainer: {
+    padding: 10,
+    borderRadius: 15,
+    backgroundColor: "#FFFBEA", // A warm background for the badge
+    borderColor: "#FFC107", // Golden border
+    borderWidth: 1,
+    marginBottom: 20,
+  },
+  badgeText: {
+    textAlign: 'center',
+    color: "#FFC107", // Golden text to match the badge theme
+    fontWeight: '600',
+  },
+
 });
 
 export default Quiz;
