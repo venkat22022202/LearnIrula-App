@@ -7,12 +7,11 @@ function ActivityScreen({ navigation }) {
     <View style={styles.container}>
       <Text style={styles.title}>Activities</Text>
       
-      {/* Container for the buttons with a specific style for colorfulness */}
       <View style={styles.buttonsContainer}>
         <Button
           title="Check Speech"
           onPress={() => navigation.navigate('SpeechCheck')}
-          buttonStyle={{ ...styles.button, backgroundColor: '#FF6347' }} // Tomato
+          buttonStyle={{ ...styles.button, backgroundColor: '#EF5350' }} // Reddish
           icon={<Icon name="mic" type="material" color="#ffffff" />}
           titleStyle={styles.buttonText}
         />
@@ -20,7 +19,7 @@ function ActivityScreen({ navigation }) {
         <Button
           title="Take a Quiz"
           onPress={() => navigation.navigate('Quiz')}
-          buttonStyle={{ ...styles.button, backgroundColor: '#4682B4' }} // Steel Blue
+          buttonStyle={{ ...styles.button, backgroundColor: '#5C6BC0' }} // Indigo
           icon={<Icon name="school" type="material" color="#ffffff" />}
           titleStyle={styles.buttonText}
         />
@@ -28,7 +27,7 @@ function ActivityScreen({ navigation }) {
         <Button
           title="Coin Tossing"
           onPress={() => navigation.navigate('CoinTossing')}
-          buttonStyle={{ ...styles.button, backgroundColor: '#32CD32' }} // Lime Green
+          buttonStyle={{ ...styles.button, backgroundColor: '#66BB6A' }} // Green
           icon={<Icon name="casino" type="material" color="#ffffff" />}
           titleStyle={styles.buttonText}
         />
@@ -36,7 +35,7 @@ function ActivityScreen({ navigation }) {
         <Button
           title="SpinWheel"
           onPress={() => navigation.navigate('SpinWheel')}
-          buttonStyle={{ ...styles.button, backgroundColor: '#FFA07A' }} // Light Salmon
+          buttonStyle={{ ...styles.button, backgroundColor: '#FFA726' }} // Orange
           icon={<Icon name="refresh" type="material" color="#ffffff" />}
           titleStyle={styles.buttonText}
         />
@@ -50,42 +49,42 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#E6E6FA', // Lavender background
+    backgroundColor: '#E6E6FA', // Soft Lavender
   },
   title: {
-    fontSize: 26,
-    color: '#2F4F4F', // Dark Slate Gray for the title
-    marginBottom: 20, // Adjusted to reduce space above the button container
+    fontSize: 28,
+    color: '#37474F', // Darker Slate Gray for stronger contrast
+    marginBottom: 20,
     fontWeight: 'bold',
+    letterSpacing: 1, // Slightly spaced out letters
   },
   buttonsContainer: {
-    backgroundColor: '#F0F8FF', // Alice Blue for a slight contrast with lavender
-    borderRadius: 20, // Rounded corners
-    padding: 20, // Padding inside the container
-    shadowColor: '#000', // Shadow for depth
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.23,
-    shadowRadius: 2.62,
-    elevation: 4,
+    backgroundColor: '#FFFFFF', // Pure white for a clean, modern look
+    borderRadius: 20,
+    padding: 20,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   button: {
-    borderRadius: 25,
-    paddingVertical: 12,
+    borderRadius: 20, // More pronounced rounded corners
+    paddingVertical: 15,
     paddingHorizontal: 20,
     marginVertical: 10,
-    minWidth: 250,
-    elevation: 5, // Slightly increased elevation for a more pronounced shadow
+    minWidth: 260, // Slightly wider buttons
+    elevation: 2, // Subtle elevation for depth
     flexDirection: 'row',
     alignItems: 'center',
-    borderWidth: 1, // Add a border to make the button stand out
-    borderColor: '#ddd', // Subtle border color
-    backgroundColor: 'transparent', // Use a transparent background to highlight the border and shadow
+    borderWidth: 0, // Removed border for a cleaner look
+    backgroundColor: 'transparent', // Emphasizing the button color over borders
   },
   buttonText: {
     fontSize: 18,
-    fontWeight: '500', // Make text a bit bolder
+    fontWeight: 'bold', // Stronger emphasis on button text
     marginLeft: 10,
-    color: '#2F4F4F', // Use a color that contrasts well with the button's background
+    color: '#FFFFFF', // White text for clarity
   },
 });
 
