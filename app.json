@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "LearnIrula",
-    "slug": "IRULA",
+    "slug": "learnirulaapp",
     "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -31,8 +31,9 @@
     },
     "extra": {
       "eas": {
-        "projectId": "7e9e78cc-a62b-4b0d-a1c5-1a605e10ca59"
+        "projectId": "b89c1e35-b390-47e0-931e-919bcb9200a0"
       }
-    }
+    },
+    "owner": "hemanth_gopisetty_2002"
   }
 }
