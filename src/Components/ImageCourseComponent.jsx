@@ -4,7 +4,7 @@ const ImageCourseComponent = () => {
 
   return (
     <>
-          <Image  source={require('./Course.png')} className="w-full h-[50%]"/>
+          <Image  source={require('./course.png')} className="w-full h-[50%]"/>
     </>
   );
 };

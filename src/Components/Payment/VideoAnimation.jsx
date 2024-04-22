@@ -16,7 +16,7 @@ const VideoAnimation = () => {
   return (
     <View style={{}}>
       <Animated.Image
-        source={require("./Bills.png")}
+        source={require("./bills.png")}
         style={{ opacity: animatedValue }}
         className="w-80 h-80"
       />

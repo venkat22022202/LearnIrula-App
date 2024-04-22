@@ -4,7 +4,7 @@ const ImageOptionsComponent = () => {
   return (
     <>
       <View className="w-screen h-[35vh]">
-        <Image source={require("./Invoice.png")} className="w-full h-full" />
+        <Image source={require("./invoice.png")} className="w-full h-full" />
       </View>
     </>
   );
